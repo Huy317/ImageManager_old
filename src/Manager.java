@@ -12,7 +12,7 @@ public class Manager {
     }
     //TODO: scan folder for images .png,.jpg,... -> create Image class with url -> add to list
     public void scanFolder(String path){
-
+        
     }
     public void writeTo(String path){
         try{

@@ -34,6 +34,7 @@ public class Manager {
             while ((im =(Image) ois.readObject()) != null){
                 this.add(im);
             }
+            ois.close();
         }catch(ClassNotFoundException e){
             System.out.println(e.getMessage());
         }catch(IOException e){

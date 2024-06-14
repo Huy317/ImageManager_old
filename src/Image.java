@@ -1,18 +1,41 @@
 import java.util.*;
+/*
+ * This class represents an image.
+ * It has a path and a list of tags.
+ * @author Huy
+ */
 public class Image {
     private String path;
     private ArrayList<String> tags = new ArrayList<String>();
+    /**
+     *
+     * @param path url of the image i.e: "D:\\Images\example.jpg"
+     */
     public Image(String path){
         this.path = path;
     }
     public Image(){
     }
+
+    /**
+     *
+     * @return url of the image i.e: "D:\\Images\example.jpg"
+     */
     public String getPath(){
         return path;
     }
-    public ArrayList<String> getTags(){
+
+    /**
+     *
+     * @return a List of tags this image has
+     */
+    public ArrayList<String> getTags() {
         return tags;
     }
+    /**
+     *
+     * @return array of tags this image has
+     */
     public String[] getTagsArray(){
         String[] array = new String[tags.size()];
         return tags.toArray(array);
@@ -26,5 +49,13 @@ public class Image {
         }
         tags.add(tag);
         return true;
+    }
+    public void addTag(String[] tags){
+        if (tags == null){
+            return;
+        }
+        for (String tag : tags){
+            addTag(tag);
+        }
     }
 }

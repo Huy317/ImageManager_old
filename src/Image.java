@@ -1,7 +1,7 @@
 import java.util.*;
 public class Image {
     private String path;
-    private ArrayList<String> tags;
+    private ArrayList<String> tags = new ArrayList<String>();
     public Image(String path){
         this.path = path;
     }

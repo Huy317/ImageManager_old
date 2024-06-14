@@ -42,9 +42,9 @@ public class Manager {
     }
 
     /**
-     * Scan for images in selected folder
+     * Scan for images in selected folder ONLY
      * Does not use recursion
-     * @param path
+     * @param path the path/url to the folder
      */
     public void scanOneFolder(String path){
         File folder = new File(path);

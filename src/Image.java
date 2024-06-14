@@ -14,6 +14,17 @@ public class Image {
         return tags;
     }
     public String[] getTagsArray(){
-        return tags.toArray(new String[tags.size()]);
+        String[] array = new String[tags.size()];
+        return tags.toArray(array);
+    }
+    public boolean hasTag(String tag){
+        return tags.contains(tag);
+    }
+    public boolean addTag(String tag){
+        if(hasTag(tag)){
+            return false;
+        }
+        tags.add(tag);
+        return true;
     }
 }

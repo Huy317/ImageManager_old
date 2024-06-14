@@ -1,18 +1,24 @@
 import  java.util.*;
 import  java.io.*;
 public class Manager {
-    private ArrayList<Image> list = new ArrayList<Image>();
-    
+    private HashMap<String,Image> map = new HashMap<String, Image>();
 
+    public boolean add(Image im){
+        if (map.get(im.getPath())==null){
+            map.put(im.getPath(),im);
+            return true;
+        }
+        return false;
+    }
+    //TODO: scan folder for images .png,.jpg,... -> create Image class with url -> add to list
+    public void scanFolder(String path){
 
-    public void add(Image im){
-        list.add(im);
     }
     public void writeTo(String path){
         try{
             FileOutputStream fos = new FileOutputStream(path);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            for (Image im : list){
+            for (Image im : map.values()){
                 oos.writeObject(im);
             }
             oos.close();

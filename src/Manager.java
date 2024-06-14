@@ -4,16 +4,65 @@ public class Manager {
     private HashMap<String,Image> map = new HashMap<String, Image>();
 
     public boolean add(Image im){
+        if (im == null) return false;
         if (map.get(im.getPath())==null){
             map.put(im.getPath(),im);
             return true;
         }
         return false;
     }
-    //TODO: scan folder for images .png,.jpg,... -> create Image class with url -> add to list
-    public void scanFolder(String path){
-        
+    public boolean add(String path){
+        Image im = new Image(path);
+        return this.add(im);
     }
+    //TODO: scan folder for images .png,.jpg,... -> create Image class with url -> add to list
+
+    /**
+     * Scan for ALL images inside a folder/subfolders
+     * uses Recrusions
+     * @param path the path/url to the folder
+     */
+    public void scanAll(String path){
+        File folder = new File(path);
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            if (files!=null){
+                for (File file : files){
+                    if (file.isDirectory()){
+                        scanAll(file.getAbsolutePath()); // Recursively scan subfolders
+                    }else{
+                        String fileName = file.getName().toLowerCase();
+                        if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png") || fileName.endsWith(".gif")){
+                            this.add(file.toURI().toString());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Scan for images in selected folder
+     * Does not use recursion
+     * @param path
+     */
+    public void scanOneFolder(String path){
+        File folder = new File(path);
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+            if (files!=null){
+                for (File file : files){
+                    if (!file.isDirectory()){
+                        String fileName = file.getName().toLowerCase();
+                        if (fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png") || fileName.endsWith(".gif")){
+                            this.add(file.toURI().toString());
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void writeTo(String path){
         try{
             FileOutputStream fos = new FileOutputStream(path);

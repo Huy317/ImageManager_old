@@ -1,10 +1,11 @@
 import java.util.*;
+import  java.io.*;
 /*
  * This class represents an image.
  * It has a path and a list of tags.
  * @author Huy
  */
-public class Image {
+public class Image implements Serializable {
     private String path;
     private ArrayList<String> tags = new ArrayList<String>();
     /**

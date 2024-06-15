@@ -15,7 +15,8 @@ public class Manager {
         Image im = new Image(path);
         return this.add(im);
     }
-    //TODO: scan folder for images .png,.jpg,... -> create Image class with url -> add to list
+
+
 
     /**
      * Scan for ALL images inside a folder/subfolders
@@ -40,7 +41,6 @@ public class Manager {
             }
         }
     }
-
     /**
      * Scan for images in selected folder ONLY
      * Does not use recursion

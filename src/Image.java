@@ -17,7 +17,20 @@ public class Image implements Serializable {
     }
     public Image(){
     }
-
+    /**
+     *
+     * @return the name of the image i.e: "example.jpg"
+     */
+    public String getName(){
+        return path.substring(path.lastIndexOf("\\")+1);
+    }
+    /**
+     *
+     * @return the name of the image without the extension i.e: "example"
+     */
+    public String getNameWithoutExtension(){
+        return path.substring(path.lastIndexOf("\\")+1, path.lastIndexOf("."));
+    }
     /**
      *
      * @return url of the image i.e: "D:\\Images\example.jpg"

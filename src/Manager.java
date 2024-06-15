@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.HashMap;
-
+//TODO: implement add tags to images
+//TODO: implement search functions
 public class Manager {
     private final HashMap<String, Image> map = new HashMap<String, Image>();
 

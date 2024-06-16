@@ -3,8 +3,17 @@ import java.util.HashMap;
 //TODO: implement add tags to images
 //TODO: implement search functions
 public class Manager {
+    private static Manager instance;
     private final HashMap<String, Image> map = new HashMap<String, Image>();
 
+    public Manager(){
+    }
+    public static synchronized Manager getInstance(){
+        if (instance == null){
+            instance = new Manager();
+        }
+        return instance;
+    }
     public boolean add(Image im) {
         if (im == null) return false;
         if (map.get(im.getPath()) == null) {
@@ -66,6 +75,10 @@ public class Manager {
                 }
             }
         }
+    }
+
+    public int getSize(){
+        return map.size();
     }
 
     public void writeTo(String path) {

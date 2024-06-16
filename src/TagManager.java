@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,5 +33,35 @@ public class TagManager {
     public ArrayList<Tag> getTagList() {
         return new ArrayList<Tag>(map.values());
     }
+    public int getSize(){
+        return map.size();
+    }
+    public void writeTo(String path) {
+        try {
+            FileOutputStream fos = new FileOutputStream(path);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            for (Tag tag : map.values()) {
+                oos.writeObject(tag);
+            }
+            oos.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
+    public void readFrom(String path) {
+        try {
+            FileInputStream fis = new FileInputStream(path);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            Tag tag = null;
+            while ((tag = (Tag) ois.readObject()) != null) {
+                this.add(tag);
+            }
+            ois.close();
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

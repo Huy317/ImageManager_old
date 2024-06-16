@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Manager manager = new Manager();
+        Manager manager = Manager.getInstance();
         TagManager tagManager = TagManager.getInstance();
 
     }

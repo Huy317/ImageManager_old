@@ -3,6 +3,7 @@
 public class Main {
     public static void main(String[] args) {
         Manager manager = new Manager();
-        
+        TagManager tagManager = TagManager.getInstance();
+
     }
 }
